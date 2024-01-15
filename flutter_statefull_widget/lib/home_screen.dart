@@ -14,133 +14,41 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Row(children: [
-        Expanded(
-          child: Column(
-            children: [
-              Container(
-                  decoration: const BoxDecoration(color: Colors.black),
-                  width: 100,
-                  height: 100,
-                  alignment: Alignment.center,
-                  child: Text(
-                      style: const TextStyle(
-                          color: Color.fromARGB(255, 255, 193, 23)),
-                      counterLocal.toString())),
-              Expanded(
+        appBar: AppBar(),
+        body: Row(
+          children: [
+            Expanded(
+                flex: 2,
                 child: Column(
                   children: [
-                    Expanded(
-                      child: Row(
-                        children: [
-                          FloatingActionButton(
-                            backgroundColor: Color.fromARGB(255, 0, 0, 0),
-                            splashColor: Color.fromARGB(255, 51, 51, 51),
-                            onPressed: () => {
-                              setState(() {
-                                counterLocal += 3;
-                              })
-                            },
-                            child: const Text(
-                                style: TextStyle(color: Colors.red), '3'),
-                          ),
-                          FloatingActionButton(
-                            onPressed: () => {
-                              setState(() {
-                                counterLocal += 2;
-                              })
-                            },
-                            child: const Text('2'),
-                          ),
-                          FloatingActionButton(
-                            onPressed: () => {
-                              setState(() {
-                                counterLocal++;
-                              })
-                            },
-                            child: const Text('1'),
-                          ),
-                        ],
-                      ),
+                    Container(
+                      child: Text(counterLocal.toString()),
                     ),
-                    FloatingActionButton(
-                      onPressed: () => {
-                        setState(
-                          () {
-                            counterLocal--;
-                          },
-                        )
-                      },
-                      child: const Text('-1'),
+                    Container(
+                      child: Column(children: [
+                        Expanded(
+                            child: ElevatedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    counterLocal += 3;
+                                  });
+                                },
+                                child: const Text('3')))
+                      ]),
                     )
                   ],
-                ),
-              ),
-            ],
-          ),
-        ),
-        Expanded(
-          child: Column(
-            children: [
-              Container(
-                  decoration: const BoxDecoration(color: Colors.black),
-                  width: 100,
-                  height: 100,
-                  alignment: Alignment.center,
-                  child: Text(
-                      style: const TextStyle(color: Colors.red),
-                      counterVisitor.toString())),
-              Expanded(
+                )),
+            Expanded(child: Column()),
+            Expanded(
+                flex: 2,
                 child: Column(
                   children: [
-                    Expanded(
-                      child: Row(
-                        children: [
-                          FloatingActionButton(
-                            onPressed: () => {
-                              setState(() {
-                                counterVisitor += 3;
-                              })
-                            },
-                            child: const Text('3'),
-                          ),
-                          FloatingActionButton(
-                            onPressed: () => {
-                              setState(() {
-                                counterVisitor += 2;
-                              })
-                            },
-                            child: const Text('2'),
-                          ),
-                          FloatingActionButton(
-                            onPressed: () => {
-                              setState(() {
-                                counterVisitor++;
-                              })
-                            },
-                            child: const Text('1'),
-                          ),
-                        ],
-                      ),
-                    ),
-                    FloatingActionButton(
-                      onPressed: () => {
-                        setState(
-                          () {
-                            counterVisitor--;
-                          },
-                        )
-                      },
-                      child: const Text('-1'),
+                    Container(
+                      child: Text(counterVisitor.toString()),
                     )
                   ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ]),
-    );
+                ))
+          ],
+        ));
   }
 }
