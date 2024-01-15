@@ -100,7 +100,11 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: Row(
-        children: [Text('data')],
+        children: [
+          Expanded(child: Container(child: Icon(Icons.favorite))),
+          Expanded(child: Icon(Icons.home)),
+          Expanded(child: Icon(Icons.abc))
+        ],
       ),
     );
   }
