@@ -47,12 +47,33 @@ class _HomeScreenState extends State<HomeScreen> {
           image: NetworkImage(
               'https://th.bing.com/th/id/OIG.7LUBHhIK4WaEbYMu72g1?pid=ImgGn')));
 
+  void _incrementLocal(int number) {
+    localPoints += number;
+  }
+
+  void _incrementVisitor(int number) {
+    visitorPoints += number;
+  }
+
+  void _minusOnePointLocal() {
+    localPoints--;
+  }
+
+  void _minusOnePointVisitors() {
+    visitorPoints--;
+  }
+
+  void _reset() {
+    localPoints = 0;
+    visitorPoints = 0;
+  }
+
   Container marker(int ponits, String team) {
     return Container(
       decoration: BoxDecoration(
           color: Colors.black,
           border: Border.all(
-              color: Color.fromARGB(154, 255, 204, 0),
+              color: const Color.fromARGB(154, 255, 204, 0),
               width: 3,
               style: BorderStyle.solid),
           borderRadius: const BorderRadius.all(Radius.circular(5))),
@@ -86,8 +107,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
                           color: darkMode
-                              ? Color.fromARGB(255, 255, 1, 1)
-                              : Color.fromARGB(255, 56, 19, 19)),
+                              ? const Color.fromARGB(255, 255, 1, 1)
+                              : const Color.fromARGB(255, 56, 19, 19)),
                       "Basket Molon"),
                 )),
             Expanded(
@@ -101,14 +122,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       Column(
                         children: [
                           Container(
-                            margin: EdgeInsets.all(10),
+                            margin: const EdgeInsets.all(10),
                             child: ElevatedButton(
                                 style: darkMode
                                     ? darkPointsButtom
                                     : lightPointsButtom,
                                 onPressed: () {
                                   setState(() {
-                                    localPoints += 3;
+                                    _incrementLocal(3);
                                   });
                                 },
                                 child: Text(
@@ -118,14 +139,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                     '3')),
                           ),
                           Container(
-                            margin: EdgeInsets.all(10),
+                            margin: const EdgeInsets.all(10),
                             child: ElevatedButton(
                                 style: darkMode
                                     ? darkPointsButtom
                                     : lightPointsButtom,
                                 onPressed: () {
                                   setState(() {
-                                    localPoints += 2;
+                                    _incrementLocal(2);
                                   });
                                 },
                                 child: Text(
@@ -135,14 +156,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                     '2')),
                           ),
                           Container(
-                            margin: EdgeInsets.all(10),
+                            margin: const EdgeInsets.all(10),
                             child: ElevatedButton(
                                 style: darkMode
                                     ? darkPointsButtom
                                     : lightPointsButtom,
                                 onPressed: () {
                                   setState(() {
-                                    localPoints += 1;
+                                    _incrementLocal(1);
                                   });
                                 },
                                 child: Text(
@@ -152,14 +173,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                     '1')),
                           ),
                           Container(
-                            margin: EdgeInsets.all(10),
+                            margin: const EdgeInsets.all(10),
                             child: ElevatedButton(
                                 style: darkMode
                                     ? darkPointsButtom
                                     : lightPointsButtom,
                                 onPressed: () {
                                   setState(() {
-                                    localPoints -= 1;
+                                    _minusOnePointLocal();
                                   });
                                 },
                                 child: Text(
@@ -180,14 +201,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: darkMode ? darkPointsButtom : lightPointsButtom,
                         onPressed: () {
                           setState(() {
-                            visitorPoints = 0;
-                            localPoints = 0;
+                            _reset();
                           });
                         },
                         child: Icon(Icons.replay,
                             color: darkMode
-                                ? Color.fromARGB(255, 255, 255, 255)
-                                : Color.fromARGB(255, 77, 76, 74)),
+                                ? const Color.fromARGB(255, 255, 255, 255)
+                                : const Color.fromARGB(255, 77, 76, 74)),
                       ),
                       Switch(
                           value: darkMode,
@@ -205,33 +225,31 @@ class _HomeScreenState extends State<HomeScreen> {
                       Column(
                         children: [
                           Container(
-                            margin: EdgeInsets.all(10),
-                            child: Container(
-                              child: ElevatedButton(
-                                  style: darkMode
-                                      ? darkPointsButtom
-                                      : lightPointsButtom,
-                                  onPressed: () {
-                                    setState(() {
-                                      visitorPoints += 3;
-                                    });
-                                  },
-                                  child: Text(
-                                      style: darkMode
-                                          ? whitheNumberOnButton
-                                          : blackNumberOnButton,
-                                      '3')),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.all(10),
+                            margin: const EdgeInsets.all(10),
                             child: ElevatedButton(
                                 style: darkMode
                                     ? darkPointsButtom
                                     : lightPointsButtom,
                                 onPressed: () {
                                   setState(() {
-                                    visitorPoints += 2;
+                                    _incrementVisitor(3);
+                                  });
+                                },
+                                child: Text(
+                                    style: darkMode
+                                        ? whitheNumberOnButton
+                                        : blackNumberOnButton,
+                                    '3')),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.all(10),
+                            child: ElevatedButton(
+                                style: darkMode
+                                    ? darkPointsButtom
+                                    : lightPointsButtom,
+                                onPressed: () {
+                                  setState(() {
+                                    _incrementVisitor(2);
                                   });
                                 },
                                 child: Text(
@@ -241,14 +259,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                     '2')),
                           ),
                           Container(
-                            margin: EdgeInsets.all(10),
+                            margin: const EdgeInsets.all(10),
                             child: ElevatedButton(
                                 style: darkMode
                                     ? darkPointsButtom
                                     : lightPointsButtom,
                                 onPressed: () {
                                   setState(() {
-                                    visitorPoints += 1;
+                                    _incrementVisitor(1);
                                   });
                                 },
                                 child: Text(
@@ -258,14 +276,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                     '1')),
                           ),
                           Container(
-                            margin: EdgeInsets.all(10),
+                            margin: const EdgeInsets.all(10),
                             child: ElevatedButton(
                                 style: darkMode
                                     ? darkPointsButtom
                                     : lightPointsButtom,
                                 onPressed: () {
                                   setState(() {
-                                    visitorPoints -= 1;
+                                    _minusOnePointVisitors();
                                   });
                                 },
                                 child: Text(
