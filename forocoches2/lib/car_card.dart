@@ -36,6 +36,7 @@ class CarCard extends StatelessWidget {
       height: 400,
       padding: const EdgeInsets.all(3),
       child: Card(
+        surfaceTintColor: const Color.fromARGB(255, 255, 255, 255),
         color: const Color.fromARGB(255, 255, 255, 255),
         child: Column(
           children: [

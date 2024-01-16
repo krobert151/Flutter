@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forocoches2/alquilao.dart';
 
 class CarDetail extends StatelessWidget {
   final String name;
@@ -30,22 +31,84 @@ class CarDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Column(
-          children: [
-            Text(name),
-            Container(
-              child: Image(image: NetworkImage(photoUrl)),
-            ),
-            Text(type),
-            Text(doors)
-          ],
-        ),
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: NetworkImage(
-                    'https://i1.sndcdn.com/avatars-XXzxh8piTnbN2qUS-HzmzlA-t240x240.jpg'))),
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 0, 30, 54),
+        titleTextStyle: const TextStyle(color: Colors.amber, fontSize: 25),
+        centerTitle: true,
+        title: const Text('FO**COCHES'),
       ),
+      body: ListView(children: [
+        Container(
+          margin: const EdgeInsets.symmetric(vertical: 10),
+          child: Text(
+              style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+              name),
+        ),
+        Image(image: NetworkImage(photoUrl)),
+        Container(
+          padding: const EdgeInsets.symmetric(vertical: 5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(manual ? Icons.person : Icons.disabled_by_default),
+              Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(manual ? 'Manual' : 'Auto')),
+              Icon(aa ? Icons.snowing : Icons.temple_hindu_rounded),
+              Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(aa ? 'A/A' : 'Hadam Hudsein')),
+              const Icon(Icons.person),
+              Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(seats.toString())),
+              const Icon(Icons.badge),
+              Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(bags.toString()))
+            ],
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.symmetric(vertical: 10),
+          alignment: Alignment.center,
+          child: Text(doors),
+        ),
+        Container(
+          margin: const EdgeInsets.symmetric(vertical: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 125, 0, 0),
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10)))),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text(
+                      style: TextStyle(color: Colors.white), 'Mu caro')),
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 17, 125, 0),
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10)))),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Alquilao(
+                                  name: name,
+                                )));
+                  },
+                  child: Text(
+                      style: const TextStyle(color: Colors.white), "$price €"))
+            ],
+          ),
+        )
+      ]),
     );
   }
 }
