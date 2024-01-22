@@ -1,20 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:movies_app/models/movie_list_response.dart';
-import 'package:http/http.dart' as http;
-import 'package:movies_app/screen/actors_screen.dart';
+import 'package:movies_app/screen/people_screen.dart';
+import 'package:movies_app/widget/people_widget.dart';
 import 'package:movies_app/screen/movies_screen.dart';
-
-Future<MovieListResponse> fetchMovieListResponse() async {
-  final response = await http.get(Uri.parse(
-      'https://api.themoviedb.org/3/movie/popular?api_key=6378dffd686235eb901105c6c1dd8398'));
-  if (response.statusCode == 200) {
-    return MovieListResponse.fromJson(jsonDecode(response.body) as String);
-  } else {
-    throw Exception('Failed to load album');
-  }
-}
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -30,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
   static const List<Widget> _widgetOptions = <Widget>[
-    ActorsScreen(),
+    PeopleScreen(),
     MoviesScreen()
   ];
 

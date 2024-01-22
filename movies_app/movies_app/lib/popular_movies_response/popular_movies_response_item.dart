@@ -37,7 +37,7 @@ class MovieItemResponse {
       MovieItemResponse(
         adult: data['adult'] as bool?,
         backdropPath: data['backdrop_path'] as String?,
-        genreIds: data['genre_ids'] as List<int>?,
+        genreIds: (data['genre_ids'] as List<dynamic>?)?.cast<int>(),
         id: data['id'] as int?,
         originalLanguage: data['original_language'] as String?,
         originalTitle: data['original_title'] as String?,
@@ -68,15 +68,9 @@ class MovieItemResponse {
         'vote_count': voteCount,
       };
 
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [MovieItemResponse].
   factory MovieItemResponse.fromJson(String data) {
     return MovieItemResponse.fromMap(json.decode(data) as Map<String, dynamic>);
   }
 
-  /// `dart:convert`
-  ///
-  /// Converts [MovieItemResponse] to a JSON string.
   String toJson() => json.encode(toMap());
 }
