@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedexmolona/pokemon/pokemon.dart';
 import 'package:http/http.dart' as http;
@@ -47,35 +48,37 @@ class _PokemonWidgState extends State<PokemonWidg> {
         future: pokemon,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Card(
-                child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(snapshot.data!.name!),
-                Row(
-                  children: [
-                    Expanded(
-                        flex: 1,
-                        child: Container(
-                          alignment: Alignment.bottomCenter,
-                          child: Image.network(
-                              snapshot.data!.sprites!.frontDefault!),
-                        )),
-                    Expanded(
-                        flex: 2,
-                        child: Column(
-                          children: [
-                            Text('Id: ${snapshot.data!.id!}'),
-                            Text('Type: ${snapshot.data!.types![0]}'),
-                            Text('Id: ${snapshot.data!.id!}'),
-                            Text('Id: ${snapshot.data!.id!}'),
-                            Text('Id: ${snapshot.data!.id!}'),
-                          ],
-                        ))
-                  ],
-                )
-              ],
-            ));
+            return FlipInX(
+              animate: true,
+              duration: Duration(seconds: 10),
+              child: Card(
+                  child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(snapshot.data!.name!),
+                  Row(
+                    children: [
+                      Expanded(
+                          flex: 1,
+                          child: Container(
+                            alignment: Alignment.bottomCenter,
+                            child: Image.network(
+                                snapshot.data!.sprites!.frontDefault!),
+                          )),
+                      Expanded(
+                          flex: 2,
+                          child: Column(
+                            children: [
+                              Text('Id: ${snapshot.data!.id!}'),
+                              Text('Type: negro '),
+                              Text('Id: ${snapshot.data!.id!}')
+                            ],
+                          ))
+                    ],
+                  )
+                ],
+              )),
+            );
           } else if (snapshot.hasError) {
             return Text('${snapshot.error}');
           }

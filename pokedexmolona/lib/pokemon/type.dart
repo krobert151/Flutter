@@ -1,8 +1,8 @@
-import 'type.dart';
+import 'package:pokedexmolona/pokemon/subtype.dart';
 
 class Type {
   int? slot;
-  Type? type;
+  SubType? type;
 
   Type({this.slot, this.type});
 
@@ -10,7 +10,7 @@ class Type {
         slot: json['slot'] as int?,
         type: json['type'] == null
             ? null
-            : Type.fromJson(json['type'] as Map<String, dynamic>),
+            : SubType.fromJson(json['type'] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toJson() => {
