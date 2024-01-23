@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:movies_app/popular_movies_response/popular_movies_response_item.dart';
 
@@ -6,6 +8,31 @@ class MovieItem extends StatelessWidget {
   final MovieItemResponse movie;
   @override
   Widget build(BuildContext context) {
-    return Text(movie.title.toString());
+    return Container(
+      margin: const EdgeInsets.all(30),
+      child: TextButton(
+        onPressed: () {},
+        child: Column(
+          children: [
+            Text(movie.title.toString()),
+            Image(
+                image: NetworkImage(
+                    'https://image.tmdb.org/t/p/w500/${movie.posterPath}')),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(movie.releaseDate.toString()),
+                Row(
+                  children: [
+                    Text(movie.voteAverage.toString()),
+                    const Icon(Icons.star_border_outlined)
+                  ],
+                )
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
