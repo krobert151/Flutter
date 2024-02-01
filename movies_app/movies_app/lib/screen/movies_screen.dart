@@ -6,6 +6,6 @@ class MoviesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MovieWidget();
+    return const MovieWidget();
   }
 }
