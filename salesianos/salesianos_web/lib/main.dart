@@ -95,7 +95,8 @@ class _WebViewExampleState extends State<WebViewExample> {
           );
         },
       )
-      ..loadRequest(Uri.parse('https://triana.salesianos.edu/'));
+      ..loadRequest(Uri.parse(
+          'https://www.themoviedb.org/authenticate/6378dffd686235eb901105c6c1dd8398?redirect_to=http://www.yourapp.com/approved'));
 
     // #docregion platform_features
     if (controller.platform is AndroidWebViewController) {
